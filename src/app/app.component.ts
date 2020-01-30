@@ -8,13 +8,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  photos = [];
+  photos: Object[] = [];
 
   constructor(
     httpClient: HttpClient
   ) {
-    console.log('http', httpClient);
-
+    httpClient
+      .get<Object[]>('http://localhost:3000/flavio/photos')  //it returns an Observable; data is not yet retrieved; Object[] is the data type returned by the endpoint
+      .subscribe(photos => {  //with subscribe then data is in fact retrieved
+        this.photos = photos;
+        console.log('photos', this.photos);
+      });
   }
 
 }
