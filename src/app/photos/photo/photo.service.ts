@@ -1,3 +1,4 @@
+import { Photo } from './photo';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -10,7 +11,7 @@ export class PhotoService {
 
     listFromUser(username: string){
       return this.httpClient
-        .get<Object[]>(API + '/' + username + '/photos');  //it returns an Observable; data is not yet retrieved; Object[] is the data type returned by the endpoint
+        .get<Photo[]>(API + '/' + username + '/photos');  //it returns an Observable; data is not yet retrieved; Object[] is the data type returned by the endpoint
     }
 
 }
