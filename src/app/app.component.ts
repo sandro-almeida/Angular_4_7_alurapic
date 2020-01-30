@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { PhotoService } from './photos/photo/photo.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -11,14 +11,14 @@ export class AppComponent {
   photos: Object[] = [];
 
   constructor(
-    httpClient: HttpClient
+    photoService: PhotoService
   ) {
-    httpClient
-      .get<Object[]>('http://localhost:3000/flavio/photos')  //it returns an Observable; data is not yet retrieved; Object[] is the data type returned by the endpoint
-      .subscribe(photos => {  //with subscribe then data is in fact retrieved
-        this.photos = photos;
-        console.log('photos', this.photos);
-      });
+      photoService
+        .listFromUser('flavio')
+        .subscribe(photos => {  //with subscribe then data is in fact retrieved
+          this.photos = photos;
+          console.log('photos', this.photos);
+        });
   }
 
 }
