@@ -1,3 +1,4 @@
+import { FilterByDescription } from './photo-list/filter-by-description.pipe';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -8,7 +9,13 @@ import { PhotoFormComponent } from './photo-form/photo-form.component';
 import { PhotosComponent } from './photo-list/photos/photos.component';
 
 @NgModule({
-    declarations: [ PhotoComponent, PhotoListComponent, PhotoFormComponent, PhotosComponent ], //these are the components that are part of this module
+    declarations: [ 
+        PhotoComponent, 
+        PhotoListComponent, 
+        PhotoFormComponent, 
+        PhotosComponent,
+        FilterByDescription
+     ], //these are the components that are part of this module
     //exports: [ PhotoComponent ],       //these are the components that are exported from this module
     imports: [ HttpClientModule, CommonModule ]
 })
